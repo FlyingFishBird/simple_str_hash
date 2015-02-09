@@ -31,7 +31,8 @@ long int PJWHash(string& s)
 	long int test = 0;
 	for (int i = 0; i < s.length(); ++i) {
 		hash = (hash << OneEighth) + s[i];
-		if ((test = hash & HighBits) != 0) {
+		test = hash & HighBits;
+		if (test) {
 			hash = ((hash & (test >> ThreeQuarters)) & (~HighBits));
 		}
 	}
